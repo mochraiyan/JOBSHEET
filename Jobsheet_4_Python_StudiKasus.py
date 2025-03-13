@@ -103,6 +103,8 @@ def edit_buku(daftar_buku):
   buku_yang_diedit['penulis'] = penulis_buku
   buku_yang_diedit['stok'] = stok_buku
 
+  buku_yang_diedit['tersedia'] = not buku_yang_diedit['stok'] < 1
+
   print(f"Buku dengan kode {kode_buku} telah berhasil di edit!")
 
 def pinjam_buku(daftar_buku, daftar_riwayat_peminjaman_buku):
