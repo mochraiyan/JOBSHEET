@@ -26,12 +26,12 @@ def tampilkan_buku(daftar_buku):
                     'Ya' if buku['tersedia'] else 'Tidak'))
 
 
-def cari_buku(daftar_buku, tipe_pencarian, pencarian):
+def cari_buku(daftar_buku):
   hasil_pencarian = []
-  tipe_pencarian = tipe_pencarian.lower()
-  pencarian = pencarian.lower()
+  tipe_pencarian = input("Tipe Pencarian ('judul', 'genre', 'penulis') >> ").lower()
+  pencarian = input("Cari >> ").lower()
   
-  if not ['judul', 'genre', 'penulis'] in tipe_pencarian:
+  if tipe_pencarian not in ['judul', 'genre', 'penulis']:
     print(f"Tipe pencarian {tipe_pencarian} tidak ada dalam entry tipe pencarian!")
     return
   
@@ -249,7 +249,8 @@ while True:
       print("1. Tampilkan Buku")
       print("2. Tambah Buku")
       print("3. Edit Buku")
-      print("4. Riwayat Peminjaman Buku")
+      print("4. Cari Buku")
+      print("5. Riwayat Peminjaman Buku")
       print("0. Keluar Kode Admin")
 
       menu = input("(0-3) >> ")
@@ -260,6 +261,9 @@ while True:
       elif menu == "3":
         edit_buku(daftar_buku)
       elif menu == "4":
+        daftar_filter_buku = cari_buku(daftar_buku)
+        tampilkan_buku(daftar_filter_buku)
+      elif menu == "5":
         tampilkan_daftar_riwayat_peminjaman_buku(daftar_riwayat_peminjaman_buku)
       elif menu == "0":
         break
@@ -269,6 +273,7 @@ while True:
     while True:
       print("1. Tampilkan Buku")
       print("2. Pinjam Buku")
+      print("3. Cari Buku")
       print("0. Keluar Kode Pengguna")
 
       menu = input("(0-2) >> ")
@@ -276,6 +281,9 @@ while True:
         tampilkan_buku(daftar_buku)
       elif menu == "2":
         pinjam_buku(daftar_buku, daftar_riwayat_peminjaman_buku)
+      elif menu == "3":
+        daftar_filter_buku = cari_buku(daftar_buku)
+        tampilkan_buku(daftar_filter_buku)
       elif menu == "0":
         break
       else:
