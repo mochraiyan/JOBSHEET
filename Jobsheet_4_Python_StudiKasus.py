@@ -1,6 +1,10 @@
 # Made By https://github.com/mochraiyan
 
 def tampilkan_buku(daftar_buku):
+  if not daftar_buku:
+    print("Daftar buku kosong, ini terjadi mungkin karena anda menggunakan fitur cari_buku.")
+    return
+
   print("Buku yang tersedia: ")
   print("-" * 32)
   for buku in daftar_buku:
@@ -33,7 +37,7 @@ def cari_buku(daftar_buku):
   
   if tipe_pencarian not in ['judul', 'genre', 'penulis']:
     print(f"Tipe pencarian {tipe_pencarian} tidak ada dalam entry tipe pencarian!")
-    return
+    return hasil_pencarian
   
   for buku in daftar_buku:
     if 'judul' in tipe_pencarian:
