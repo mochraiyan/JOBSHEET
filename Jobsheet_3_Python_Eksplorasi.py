@@ -1,3 +1,5 @@
+# Made By https://github.com/mochraiyan
+
 # Daftar harga produk yang tersedia di toko
 harga_produk = [32000, 21000, 13000, 14000]
 # Daftar nama produk yang tersedia di toko

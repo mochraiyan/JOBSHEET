@@ -1,5 +1,4 @@
-# No comments too lazy
-# By github.com/mochraiyan
+# Made By https://github.com/mochraiyan
 
 class Pasien:
   def __init__(self, nama, umur, emergency, biaya, status):
