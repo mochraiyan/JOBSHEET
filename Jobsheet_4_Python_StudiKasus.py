@@ -84,6 +84,7 @@ def tambah_buku(daftar_buku):
 
 def edit_buku(daftar_buku):
   kode_buku = input("Kode >> ")
+
   for buku in daftar_buku:
     if kode_buku == buku['kode']:
       buku_yang_diedit = buku
@@ -93,15 +94,18 @@ def edit_buku(daftar_buku):
     print(f"Buku dengan kode {kode_buku} tidak ditemukan!")
     return
 
-  judul_buku = input("Judul >> ")
-  genre_buku = input("Genre >> ")
-  penulis_buku = input("Penulis >> ")
-  stok_buku = int(input("Stok >> "))
+  tampilkan_buku([buku_yang_diedit])
 
-  buku_yang_diedit['judul'] = judul_buku
-  buku_yang_diedit['genre'] = genre_buku
-  buku_yang_diedit['penulis'] = penulis_buku
-  buku_yang_diedit['stok'] = stok_buku
+  properti = input("Apa properti yang anda ingin edit? (judul, genre, penulis, stok) >> ").lower()
+  if properti in ['judul', 'genre', 'penulis', 'stok']:
+    value = input(f"Nilai untuk {properti}? >>")
+    if properti == "stok":
+      buku_yang_diedit[properti] = int(value)
+    else:
+      buku_yang_diedit[properti] = value
+  else:
+    print(f"Properti dengan nama {properti} tidak ditemukan dalam entry!")
+    return
 
   buku_yang_diedit['tersedia'] = not buku_yang_diedit['stok'] < 1
 

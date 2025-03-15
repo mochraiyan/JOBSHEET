@@ -24,18 +24,27 @@ def tampilkan_siswa():
   print("-" * 30)
 
 def hapus_siswa(daftar_siswa, nama_dihapus):
+  ditemukan = False
   for i in range(len(daftar_siswa)):
     if daftar_siswa[i]["nama"].lower() == nama_dihapus.lower():
       del daftar_siswa[i]
+      ditemukan = True
       print(f"Siswa dengan nama {nama_dihapus} berhasil dihapus.")
       return daftar_siswa
-  print(f"Siswa dengan nama {nama_dihapus} tidak ditemukan.")
+
+  if not ditemukan:
+    print(f"Siswa dengan nama {nama_dihapus} tidak ditemukan.")
+
 
 def cari_siswa(daftar_siswa, nama):
+  ditemukan = False
   for siswa in daftar_siswa:
     if siswa["nama"].lower() == nama.lower():
+      ditemukan = True
       print("{:<15} {:<10} {:5.2f}".format(siswa["nama"], siswa["kelas"], siswa["nilai"]))
-  print(f"Siswa bernama {nama} tidak ditemukan!")
+
+  if not ditemukan:
+    print(f"Siswa bernama {nama} tidak ditemukan!")
 
 def hitung_rata_rata_nilai_semua_siswa(daftar_siswa):
   nilai = 0
